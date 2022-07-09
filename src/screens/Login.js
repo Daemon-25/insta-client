@@ -6,11 +6,11 @@
  */
 
 import React, { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthenticationContext from "../contexts/auth/Auth.context";
 import { FETCH_USER_DATA } from "../contexts/types.js";
 import { LOGIN_URL } from "../config/constants";
-import Copyright from "../components/Copyight";
+import Copyright from "../components/Copyright";
 import { EmailRegex } from "../utils/regex";
 import axios from "axios";
 // Material-UI Components
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
 	const { dispatch } = useContext(AuthenticationContext);
 
-	const history = useHistory();
+	const history = useNavigate();
 	const classes = useStyles();
 
 	const [email, setEmail] = useState("");
@@ -93,7 +93,7 @@ const Login = () => {
 						localStorage.setItem("user", JSON.stringify(data.user));
 						dispatch({ type: FETCH_USER_DATA, payload: data.user });
 						// we redirect the user to home page
-						history.push("/");
+						history("/");
 					}
 				})
 				.catch((err) => {

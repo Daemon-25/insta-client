@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 
 import AuthContext from "../contexts/auth/Auth.context";
 import ProtectedRoute from "./ProtectedRoute";
@@ -11,7 +11,7 @@ import Signup from "../screens/Signup";
 import CreatePost from "../screens/CreatePost.js";
 import Profile from "../screens/Profile";
 import UserProfile from "../screens/UserProfile";
-import SubscribePost from "../screens/SubscribePosts";
+import SubscribePosts from "../screens/SubscribePosts";
 import Reset from "../screens/ResetPassword.js";
 import NewPass from "../screens/NewPassword.js";
 
@@ -20,28 +20,31 @@ const Routing = () => {
 
 	// check if we are already authenticated
 	useEffect(() => {
-		state.isAuthenticated ? <Redirect to="/" /> : <Redirect to="/login" />;
+		state.isAuthenticated ? <Navigate to="/" /> : <Navigate to="/login" />;
 	});
 
 	return (
 		<BrowserRouter>
-			<Switch>
+			<Routes>
 				{/* Public routes */}
-				<Route exact path="/login" component={Login} />
-				<Route exact path="/signup" component={Signup} />
-				<Route exact path="/reset" component={Reset} />
-				<Route exact path="/reset/:token" component={NewPass} />
+				<Route exact path="/login" element={<Login />} />
+				<Route exact path="/signup" element={<Signup />} />
+				<Route exact path="/reset" element={<Reset />} />
+				<Route exact path="/reset/:token" element={<NewPass />} />
+				<Route path="/" element={<ProtectedRoute />}>
+					<Route exact path="/" element={<SubscribePosts />} />
+					<Route exact path="/explore" element={<Home />} />
+					<Route exact path="/create" element={<CreatePost />} />
+					<Route exact path="/profile" element={<Profile />} />
+					<Route exact path="/profile/:userid" element={<UserProfile />} />
+				</Route>
 
 				{/* Separate the protected routes from public ones */}
-				<ProtectedRoute exact path="/" component={SubscribePost} />
-				<ProtectedRoute exact path="/explore" component={Home} />
-				<ProtectedRoute exact path="/create" component={CreatePost} />
-				<ProtectedRoute exact path="/profile" component={Profile} />
-				<ProtectedRoute exact path="/profile/:userid" component={UserProfile} />
+
 
 				{/* in case we want to handle the 404 page not found */}
 				{/* <Route component={NotFound} /> */}
-			</Switch>
+			</Routes>
 		</BrowserRouter>
 	);
 };

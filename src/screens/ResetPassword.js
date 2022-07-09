@@ -6,11 +6,11 @@
  */
 
 import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { RESET_PWD_URL } from "../config/constants";
 import { EmailRegex } from "../utils/regex";
-import Copyright from "../components/Copyight";
+import Copyright from "../components/Copyright";
 // Material-UI Components
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Reset = () => {
-	const history = useHistory();
+	const history = useNavigate();
 	const classes = useStyles();
 	const [email, setEmail] = useState("");
 

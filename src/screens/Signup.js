@@ -6,10 +6,10 @@
  */
 
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SIGNUP_URL } from "../config/constants";
-import Copyright from "../components/Copyight";
+import Copyright from "../components/Copyright";
 import { EmailRegex } from "../utils/regex";
 // Material-UI Components
 import { makeStyles } from "@material-ui/core/styles";
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Signup = () => {
-	const history = useHistory();
+	const history = useNavigate();
 	const classes = useStyles();
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");

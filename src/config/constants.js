@@ -18,26 +18,26 @@ export const config = (jwt) => {
  */
 
 // CreatePost Screen
-export const CREATE_POST_URL = `http://localhost:5000/createpost`;
+export const CREATE_POST_URL = `http://localhost:3001/createpost`;
 
 // Home Screen
-export const ALL_POST_URL = `http://localhost:5000/allpost`;
+export const ALL_POST_URL = `http://localhost:3001/allpost`;
 
 // Login Screen
-export const LOGIN_URL = `http://localhost:5000/signin`;
+export const LOGIN_URL = `http://localhost:3001/signin`;
 
 // NewPassword Screen
-export const NEW_PWD_URL = `http://localhost:5000/new-pwd`;
+export const NEW_PWD_URL = `http://localhost:3001/new-pwd`;
 
 // Profile Screen
-export const MY_POST_URL = `http://localhost:5000/mypost`;
-export const MY_BOOKMARKS_URL = `http://localhost:5000/bookmarks`;
+export const MY_POST_URL = `http://localhost:3001/mypost`;
+export const MY_BOOKMARKS_URL = `http://localhost:3001/bookmarks`;
 
 // ResetPassword Screen
-export const RESET_PWD_URL = `http://localhost:5000/reset-pwd`;
+export const RESET_PWD_URL = `http://localhost:3001/reset-pwd`;
 
 // SignUp Screen
-export const SIGNUP_URL = `http://localhost:5000/signup`;
+export const SIGNUP_URL = `http://localhost:3001/signup`;
 
 // SubscribePosts Screen
-export const SUB_POST_URL = `http://localhost:5000/subspost`;
+export const SUB_POST_URL = `http://localhost:3001/subspost`;

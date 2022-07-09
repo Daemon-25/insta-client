@@ -111,16 +111,16 @@ const ProfilePage = () => {
 	const [bookmarks, setBookmarks] = useState([]);
 	const [value, setValue] = useState("Posts");
 
-	const config = axiosConfig(localStorage.getItem("jwt"));
+	// const config = axiosConfig(localStorage.getItem("jwt"));
 
-	useEffect(() => {
-		axios.get(MY_POST_URL, config).then((res) => {
-			setData(res.data.posts);
-		});
-		axios.get(MY_BOOKMARKS_URL, config).then((res) => {
-			setBookmarks(res.data.bookmark);
-		});
-	}, []);
+	// useEffect(() => {
+	// 	axios.get(MY_POST_URL, config).then((res) => {
+	// 		setData(res.data.posts);
+	// 	});
+	// 	axios.get(MY_BOOKMARKS_URL, config).then((res) => {
+	// 		setBookmarks(res.data.bookmark);
+	// 	});
+	// }, []);
 
 	//Toggle the EditProfile Button to show the Dialog
 	const [openEdit, setOpenEdit] = useState(false);
@@ -151,7 +151,7 @@ const ProfilePage = () => {
 							<Box clone mb="20px">
 								<Grid container alignItems="center">
 									<Typography variant="h5">
-										{state ? state.user.Name : "IsLoading ..."}
+										{/* {state ? state.user.Name : "IsLoading ..."} */}
 									</Typography>
 									<Button
 										className={classes.editButton}
@@ -177,9 +177,9 @@ const ProfilePage = () => {
 									<Grid item>
 										<Typography variant="subtitle1">
 											<b>
-												{state
+												{/* {state
 													? state.user.Followers.length
-													: "IsLoading ..."}
+													: "IsLoading ..."} */}
 											</b>{" "}
 											followers
 										</Typography>
@@ -187,9 +187,9 @@ const ProfilePage = () => {
 									<Grid item>
 										<Typography variant="subtitle1">
 											<b>
-												{state
+												{/* {state
 													? state.user.Following.length
-													: "IsLoading ..."}
+													: "IsLoading ..."} */}
 											</b>{" "}
 											following
 										</Typography>

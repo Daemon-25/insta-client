@@ -236,7 +236,7 @@
                  </IconButton>
                  <p>Messages</p>
              </MenuItem>
-             <MenuItem component={Link} to="#">
+             {/* <MenuItem component={Link} to="#">
                  <IconButton>
                      <Badge badgeContent={6} color="secondary">
                          <NotificationsActiveOutlinedIcon
@@ -247,7 +247,7 @@
                      </Badge>
                  </IconButton>
                  <p>Notifications</p>
-             </MenuItem>
+             </MenuItem> */}
              <MenuItem component={Link} to="/profile">
                  <IconButton>
                      <AccountCircleOutlinedIcon

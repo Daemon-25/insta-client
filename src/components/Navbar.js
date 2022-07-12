@@ -150,7 +150,7 @@
  
      const findUser = (pattern) => {
          if (!(pattern === "")) {
-             const URL = `http://localhost:5000/users-research`;
+             const URL = `http://localhost:3001/users-research`;
              const config = {
                  headers: {
                      Authorization: "Bearer " + localStorage.getItem("jwt"),

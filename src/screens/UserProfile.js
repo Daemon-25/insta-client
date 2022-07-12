@@ -60,13 +60,13 @@ const UserProfilePage = () => {
 	const config = axiosConfig(localStorage.getItem("jwt"));
 
 	useEffect(() => {
-		axios.get(`http://localhost:5000/user/${userid}`, config).then((res) => {
+		axios.get(`http://localhost:3001/user/${userid}`, config).then((res) => {
 			setData(res.data);
 		});
 	}, []);
 
 	const followUser = () => {
-		axios.put(`http://localhost:5000/follow`, { followId: userid }, config).then((result) => {
+		axios.put(`http://localhost:3001/follow`, { followId: userid }, config).then((result) => {
 			dispatch({
 				type: UPDATE_FOLLOW_DATA,
 				payload: { Followers: result.data.Followers, Following: result.data.Following },
@@ -86,7 +86,7 @@ const UserProfilePage = () => {
 	};
 
 	const unfollowUser = () => {
-		axios.put(`http://localhost:5000/unfollow`, { unfollowId: userid }, config).then((result) => {
+		axios.put(`http://localhost:3001/unfollow`, { unfollowId: userid }, config).then((result) => {
 			dispatch({
 				type: UPDATE_FOLLOW_DATA,
 				payload: { Followers: result.data.Followers, Following: result.data.Following },

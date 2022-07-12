@@ -36,6 +36,8 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 // Material-UI Icons
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteIcon from "@material-ui/icons/Delete";
+import FollowList from "../components/FollowList";
+import FollowingList from "../components/FollowingList";
 
 // General styles
 const useStyles = makeStyles((theme) => ({
@@ -131,7 +133,24 @@ const ProfilePage = () => {
 	const handleEditClose = () => {
 		setOpenEdit(false);
 	};
+	//Toggle the followers button to show the list
+	const [openFollow, setOpenFollow] = useState(false);
 
+	const handleFollowClickOpen = () => {
+		setOpenFollow(true);
+	};
+	const handleFollowClose = () => {
+		setOpenFollow(false);
+	};
+//Toggle the following button to show the list
+const [openFollowing, setOpenFollowing] = useState(false);
+
+const handleFollowingClickOpen = () => {
+	setOpenFollowing(true);
+};
+const handleFollowingClose = () => {
+	setOpenFollowing(false);
+};
 	return (
 		<>
 			<Navbar />
@@ -175,24 +194,36 @@ const ProfilePage = () => {
 										</Typography>
 									</Grid>
 									<Grid item>
+										<button
+										className={classes.FollowButton}
+										variant="outlined"
+										onClick={handleFollowClickOpen}
+										>
 										<Typography variant="subtitle1">
 											<b>
 												{state
 													? state.user.Followers.length
 													: "IsLoading ..."}
 											</b>{" "}
-											followers
+											Followers
 										</Typography>
+										</button>
 									</Grid>
 									<Grid item>
+										<button
+										className={classes.FollowingButton}
+										variant="outlined"
+										onClick={handleFollowingClickOpen}
+										>
 										<Typography variant="subtitle1">
 											<b>
 												{state
 													? state.user.Following.length
 													: "IsLoading ..."}
 											</b>{" "}
-											following
+											Following
 										</Typography>
+										</button>
 									</Grid>
 								</Grid>
 							</Box>
@@ -285,6 +316,38 @@ const ProfilePage = () => {
 						Save changes
 					</Button>
 				</DialogActions>
+			</Dialog>
+			{/* Follow Dialog */}
+			<Dialog onClose={handleFollowClose} open={openFollow} className={classes.dialogContainer}>
+				<DialogTitle disableTypography className={classes.dialogTitle}>
+					<Typography variant="h6">Followers</Typography>
+					<IconButton
+						aria-label="close"
+						className={classes.closeButton}
+						onClick={handleFollowClose}
+					>
+						<CloseIcon />
+					</IconButton>
+				</DialogTitle>
+				<DialogContent dividers>
+					<FollowList />
+				</DialogContent>
+			</Dialog>
+			{/* Following Dialog */}
+			<Dialog onClose={handleFollowingClose} open={openFollowing} className={classes.dialogContainer}>
+				<DialogTitle disableTypography className={classes.dialogTitle}>
+					<Typography variant="h6">Following</Typography>
+					<IconButton
+						aria-label="close"
+						className={classes.closeButton}
+						onClick={handleFollowingClose}
+					>
+						<CloseIcon />
+					</IconButton>
+				</DialogTitle>
+				<DialogContent dividers>
+					<FollowingList />
+				</DialogContent>
 			</Dialog>
 		</>
 	);

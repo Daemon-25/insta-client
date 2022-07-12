@@ -55,7 +55,7 @@ const UserProfilePage = () => {
 	const { state, dispatch } = useContext(AuthenticationContext);
 	const { userid } = useParams();
 	const [data, setData] = useState(null);
-	const [showFollow, setShowFollow] = useState(state ? !state.Following.includes(userid) : null);
+	const [showFollow, setShowFollow] = useState(state ? !state.user.Following.includes(userid) : null);
 
 	const config = axiosConfig(localStorage.getItem("jwt"));
 

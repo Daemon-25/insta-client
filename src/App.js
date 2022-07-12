@@ -5,8 +5,6 @@ import AuthentificationState from "./contexts/auth/Auth.state"
 
 function App() {
 
-  localStorage.setItem('user', 'mera lauda')
-
   return (
     <AuthentificationState>
       <Routing/>

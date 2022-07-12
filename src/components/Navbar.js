@@ -182,7 +182,7 @@
      const handleLogOut = () => {
          localStorage.clear();
          dispatch({ type: LOGOUT });
-         history.push("/login");
+         history("/login");
      };
  
      const mobileMenuId = "primary-search-account-menu-mobile";

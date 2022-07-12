@@ -103,7 +103,7 @@ const Signup = () => {
 						setConfirmValidation(true);
 						// set a timeOut before redirecting the user to login page
 						timerRef.current = setTimeout(() => {
-							history.push("/login");
+							history("/login");
 						}, 2800);
 					}
 				})

@@ -7,12 +7,6 @@ const ProtectedRoute = (props) => {
 
 	return (
 		state.isAuthenticated?<Outlet/>:<Navigate to="/login"/>
-		// <Route
-		// 	{...restOfProps}
-		// 	render={(props) =>
-		// 		state.isAuthenticated ? <Component {...props} /> : <Navigate to="/" />
-		// 	}
-		// />
 	);
 };
 

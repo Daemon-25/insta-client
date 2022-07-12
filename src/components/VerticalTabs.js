@@ -7,9 +7,12 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
+import AuthenticationContext from "../contexts/auth/Auth.context";
+import {useContext } from "react";
 
 const TabPanel = (props) => {
 	const { children, value, index, ...other } = props;
+	
 	return (
 		<div
 			style={{ width: 430 }}
@@ -27,6 +30,8 @@ const TabPanel = (props) => {
 		</div>
 	);
 };
+
+// use case to get data of the user
 
 TabPanel.propTypes = {
 	children: PropTypes.node,
@@ -61,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 export default function VerticalTabs() {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
+	const { state } = useContext(AuthenticationContext)
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -85,6 +91,7 @@ export default function VerticalTabs() {
 				<Tab label="Email From Insta-Clone" {...a11yProps(6)} />
 			</Tabs>
 			<TabPanel value={value} index={0} style={{ width: "100%" }}>
+						{console.log(state.user)}
 				<form noValidate autoComplete="off">
 					<div className={classes.fieldContainer}>
 						<Typography variant="caption" gutterBottom className={classes.fieldLabel}>
@@ -94,6 +101,7 @@ export default function VerticalTabs() {
 							id="outlined-basic"
 							variant="outlined"
 							className={classes.fieldInput}
+							value={state.user.Name}
 						/>
 					</div>
 					<Typography variant="caption" className={classes.textInfo}>
@@ -108,6 +116,7 @@ export default function VerticalTabs() {
 							id="outlined-basic"
 							variant="outlined"
 							className={classes.fieldInput}
+							value={state.user.Name}
 						/>
 					</div>
 					<div className={classes.fieldContainer}>
@@ -146,6 +155,7 @@ export default function VerticalTabs() {
 							id="outlined-basic"
 							variant="outlined"
 							className={classes.fieldInput}
+							value={state.user.Email}
 						/>
 					</div>
 					<div className={classes.fieldContainer}>

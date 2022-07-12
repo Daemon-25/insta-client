@@ -104,6 +104,7 @@ const TabPanel = (props) => {
 	);
 };
 
+
 const ProfilePage = () => {
 	const classes = useStyles();
 	const { state } = useContext(AuthenticationContext);
@@ -112,6 +113,7 @@ const ProfilePage = () => {
 	const [value, setValue] = useState("Posts");
 
 	const config = axiosConfig(localStorage.getItem("jwt"));
+	// const {state} =useContext(AuthenticationContext);
 
 	useEffect(() => {
 		axios.get(MY_POST_URL, config).then((res) => {
@@ -131,7 +133,6 @@ const ProfilePage = () => {
 	const handleEditClose = () => {
 		setOpenEdit(false);
 	};
-
 	return (
 		<>
 			<Navbar />
@@ -278,7 +279,7 @@ const ProfilePage = () => {
 					</IconButton>
 				</DialogTitle>
 				<DialogContent dividers>
-					<VerticalTabs />
+					<VerticalTabs  />
 				</DialogContent>
 				<DialogActions>
 					<Button autoFocus onClick={handleEditClose} color="primary">

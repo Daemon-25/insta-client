@@ -131,12 +131,13 @@ const Home = () => {
 
 	useEffect(() => {
 		axios.get(ALL_POST_URL, config).then((res) => {
+			console.log(res)
 			setData(res.data.posts);
 		});
 	}, []);
 
 	const likePost = (id) => {
-		axios.put(`http://localhost:5000/like`, { postId: id }, config)
+		axios.put(`http://localhost:3001/like`, { postId: id }, config)
 			.then((result) => {
 				const newData = data.map((item) => {
 					if (result.data._id === item._id) return result.data;
@@ -148,7 +149,7 @@ const Home = () => {
 	};
 
 	const unlikePost = (id) => {
-		axios.put(`http://localhost:5000/Unlike`, { postId: id }, config)
+		axios.put(`http://localhost:3001/Unlike`, { postId: id }, config)
 			.then((res) => {
 				const newData = data.map((item) => {
 					if (res.data._id === item._id) return res.data;
@@ -160,7 +161,7 @@ const Home = () => {
 	};
 
 	const bookmark = (id) => {
-		axios.put(`http://localhost:5000/bookmark-post`, { postId: id }, config)
+		axios.put(`http://localhost:3001/bookmark-post`, { postId: id }, config)
 			.then((result) => {
 				dispatch({
 					type: BOOKMARK_POST,
@@ -172,7 +173,7 @@ const Home = () => {
 	};
 
 	const removeBookmark = (id) => {
-		axios.put(`http://localhost:5000/remove-bookmark`, { postId: id }, config)
+		axios.put(`http://localhost:3001/remove-bookmark`, { postId: id }, config)
 			.then((result) => {
 				dispatch({
 					type: BOOKMARK_POST,
@@ -185,7 +186,7 @@ const Home = () => {
 
 	const makeComment = (text, postId) => {
 		setComment("");
-		axios.put(`http://localhost:5000/comment`, { text, postId }, config)
+		axios.put(`http://localhost:3001/comment`, { text, postId }, config)
 			.then((result) => {
 				const newData = data.map((item) => {
 					if (result.data._id === item._id) return result.data;
@@ -198,7 +199,7 @@ const Home = () => {
 	};
 
 	const deletePost = (postId) => {
-		axios.delete(`http://localhost:5000/deletepost/${postId}`, config).then((res) => {
+		axios.delete(`http://localhost:3001/deletepost/${postId}`, config).then((res) => {
 			const newData = data.filter((item) => {
 				return item._id !== res.data;
 			});

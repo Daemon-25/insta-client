@@ -91,6 +91,7 @@ const Login = () => {
 
 						// we also store the user details
 						localStorage.setItem("user", JSON.stringify(data.user));
+						
 						dispatch({ payload: data.user, type: FETCH_USER_DATA });
 
 						// we redirect the user to home page

@@ -106,6 +106,7 @@ const TabPanel = (props) => {
 	);
 };
 
+
 const ProfilePage = () => {
 	const classes = useStyles();
 	const { state } = useContext(AuthenticationContext);
@@ -114,6 +115,7 @@ const ProfilePage = () => {
 	const [value, setValue] = useState("Posts");
 
 	const config = axiosConfig(localStorage.getItem("jwt"));
+	// const {state} =useContext(AuthenticationContext);
 
 	useEffect(() => {
 		axios.get(MY_POST_URL, config).then((res) => {
@@ -133,6 +135,7 @@ const ProfilePage = () => {
 	const handleEditClose = () => {
 		setOpenEdit(false);
 	};
+<<<<<<< HEAD
 	//Toggle the followers button to show the list
 	const [openFollow, setOpenFollow] = useState(false);
 
@@ -151,6 +154,8 @@ const handleFollowingClickOpen = () => {
 const handleFollowingClose = () => {
 	setOpenFollowing(false);
 };
+=======
+>>>>>>> bfbe4e9e98743de8f84a8c65766f2f85dbd371fd
 	return (
 		<>
 			<Navbar />
@@ -309,7 +314,7 @@ const handleFollowingClose = () => {
 					</IconButton>
 				</DialogTitle>
 				<DialogContent dividers>
-					<VerticalTabs />
+					<VerticalTabs  />
 				</DialogContent>
 				<DialogActions>
 					<Button autoFocus onClick={handleEditClose} color="primary">

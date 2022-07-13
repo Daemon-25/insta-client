@@ -135,7 +135,6 @@ const ProfilePage = () => {
 	const handleEditClose = () => {
 		setOpenEdit(false);
 	};
-<<<<<<< HEAD
 	//Toggle the followers button to show the list
 	const [openFollow, setOpenFollow] = useState(false);
 
@@ -154,8 +153,6 @@ const handleFollowingClickOpen = () => {
 const handleFollowingClose = () => {
 	setOpenFollowing(false);
 };
-=======
->>>>>>> bfbe4e9e98743de8f84a8c65766f2f85dbd371fd
 	return (
 		<>
 			<Navbar />

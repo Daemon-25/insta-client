@@ -73,7 +73,7 @@ export default function FollowList() {
             {state.user.Followers.map((e)=>{
                 return (
                     <>
-                        {e._id}<br/>
+                        {e}<br/>
                     </>
                 )
             })}

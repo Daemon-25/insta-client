@@ -133,6 +133,9 @@ const ProfilePage = () => {
 	const handleEditClose = () => {
 		setOpenEdit(false);
 	};
+
+	console.log(state)
+	
 	return (
 		<>
 			<Navbar />

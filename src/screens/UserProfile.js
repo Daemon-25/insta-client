@@ -1,15 +1,8 @@
-/**
- *
- * @author Anass Ferrak aka " TheLordA " <ferrak.anass@gmail.com>
- * GitHub repo: https://github.com/TheLordA/Instagram-Clone
- *
- */
-
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import AuthenticationContext from "../contexts/auth/Auth.context";
-import { UPDATE_FOLLOW_DATA } from "../contexts/types";
+import { UPDATE_USER } from "../contexts/types";
 import { config as axiosConfig } from "../config/constants";
 // Material-UI Components
 import { makeStyles } from "@material-ui/styles";
@@ -23,6 +16,7 @@ import Icon from "@material-ui/core/Icon";
 import Avatar from "@material-ui/core/Avatar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Navbar from "../components/Navbar";
 
 // General Styles
 const useStyles = makeStyles((theme) => ({
@@ -53,9 +47,9 @@ const UserProfilePage = () => {
 	const classes = useStyles();
 	const [value, setValue] = useState("Posts"); // to switch between different tabs
 	const { state, dispatch } = useContext(AuthenticationContext);
-	const { userid } = useParams();
+	const { userid, userName } = useParams();
 	const [data, setData] = useState(null);
-	const [showFollow, setShowFollow] = useState(state ? !state.user.Following.includes(userid) : null);
+	const [showFollow, setShowFollow] = useState(state ? !state.user.Following.find(i => i.FollowingId === userid) : null)
 
 	const config = axiosConfig(localStorage.getItem("jwt"));
 
@@ -68,8 +62,8 @@ const UserProfilePage = () => {
 	const followUser = () => {
 		axios.put(`http://localhost:3001/follow`, { followId: userid }, config).then((result) => {
 			dispatch({
-				type: UPDATE_FOLLOW_DATA,
-				payload: { Followers: result.data.Followers, Following: result.data.Following },
+				type: UPDATE_USER,
+				payload: result.data,
 			});
 			localStorage.setItem("user", JSON.stringify(result.data));
 			setData((prevState) => {
@@ -88,12 +82,12 @@ const UserProfilePage = () => {
 	const unfollowUser = () => {
 		axios.put(`http://localhost:3001/unfollow`, { unfollowId: userid }, config).then((result) => {
 			dispatch({
-				type: UPDATE_FOLLOW_DATA,
-				payload: { Followers: result.data.Followers, Following: result.data.Following },
+				type: UPDATE_USER,
+				payload: result.data,
 			});
 			localStorage.setItem("user", JSON.stringify(result.data));
 			setData((prevState) => {
-				const newFollower = prevState.user.Followers.filter((item) => item !== result.data._id);
+				const newFollower = prevState.user.Followers.filter((item) => item.FollowerId !== result.data._id);
 				return {
 					...prevState,
 					user: {
@@ -107,8 +101,10 @@ const UserProfilePage = () => {
 	};
 
 	return (
+		
 		<React.Fragment>
 			<CssBaseline />
+			<Navbar />
 			{data ? (
 				<Box component="main" className={classes.root}>
 					<Box mb="44px">

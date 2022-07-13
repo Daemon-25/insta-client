@@ -178,9 +178,6 @@ const SubscribePost = () => {
 		});
 	};
 
-	console.log(localStorage.getItem('user'))
-	console.log(state)
-
 	return (
 		<>
 			<Navbar />

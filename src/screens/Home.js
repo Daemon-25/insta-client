@@ -269,7 +269,7 @@ const Home = () => {
 							<IconButton aria-label="comments">
 								<ChatBubbleOutlineIcon />
 							</IconButton>
-							{state.Bookmarks.includes(item._id) ? (
+							{state.user.Bookmarks.includes(item._id) ? (
 								<IconButton
 									aria-label="Remove Bookmark"
 									style={{ marginLeft: "auto", color: "#e0d011" }}

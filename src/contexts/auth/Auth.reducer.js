@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { FETCH_USER_DATA, UPDATE_FOLLOW_DATA, BOOKMARK_POST, LOGOUT } from "../types";
+import { FETCH_USER_DATA, UPDATE_USER, BOOKMARK_POST, LOGOUT } from "../types";
 
 export default (state, action) => {
 	const { payload, type } = action;
@@ -11,11 +11,10 @@ export default (state, action) => {
 				isAuthenticated: true,
 				user: payload,
 			};
-		case UPDATE_FOLLOW_DATA:
+		case UPDATE_USER:
 			return {
 				...state,
-				Followers: payload.Followers,
-				Following: payload.Following,
+				user : payload
 			};
 		case BOOKMARK_POST:
 			return {

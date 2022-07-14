@@ -91,6 +91,7 @@ const Login = () => {
 
 						// we also store the user details
 						localStorage.setItem("user", JSON.stringify(data.user));
+						console.log(data)
 						
 						dispatch({ payload: data.user, type: FETCH_USER_DATA });
 
@@ -108,6 +109,8 @@ const Login = () => {
 			setFormatValidation(true);
 		}
 	};
+
+	
 
 	return (
 		<Grid container>

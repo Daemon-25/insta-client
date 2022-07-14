@@ -153,7 +153,7 @@
              const URL = `http://localhost:3001/users-research`;
              const config = {
                  headers: {
-                     Authorization: "Bearer " + localStorage.getItem("jwt"),
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
                  },
              };
              Axios.post(URL, { pattern }, config).then((res) => {
@@ -293,7 +293,7 @@
                                  <Link
                                      className={classes.links}
                                      key={item._id}
-                                     to={item._id !== state._id ? `/profile/${item._id}` : "/profile"}
+                                     to={item._id !== state.user._id ? `/profile/${item._id}` : "/profile"}
                                      onClick={handleCloseModal}
                                  >
                                      <Divider

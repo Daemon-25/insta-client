@@ -14,6 +14,8 @@ import UserProfile from "../screens/UserProfile";
 import SubscribePosts from "../screens/SubscribePosts";
 import Reset from "../screens/ResetPassword.js";
 import NewPass from "../screens/NewPassword.js";
+import Chat from "../screens/Chat";
+import Messages from "../screens/Messages";
 
 const Routing = () => {
 	const { state } = useContext(AuthContext);
@@ -37,6 +39,7 @@ const Routing = () => {
 					<Route exact path="/create" element={<CreatePost />} />
 					<Route exact path="/profile" element={<Profile />} />
 					<Route exact path="/profile/:userid" element={<UserProfile />} />
+					<Route exact path="/messages" element={<Chat />} />
 				</Route>
 
 				{/* Separate the protected routes from public ones */}

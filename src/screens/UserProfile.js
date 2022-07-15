@@ -101,10 +101,11 @@ const UserProfilePage = () => {
 	};
 
 	return (
-		
+		<>
+		<Navbar />
 		<React.Fragment>
 			<CssBaseline />
-			<Navbar />
+			
 			{data ? (
 				<Box component="main" className={classes.root}>
 					<Box mb="44px">
@@ -228,6 +229,7 @@ const UserProfilePage = () => {
 				"Is Loading ..."
 			)}
 		</React.Fragment>
+		</>
 	);
 };
 

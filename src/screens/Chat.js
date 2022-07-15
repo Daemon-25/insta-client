@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { io } from "socket.io-client";
 import Navbar from '../components/Navbar';
 import AuthenticationContext from '../contexts/auth/Auth.context';
-import './Chatcss';
+import './Chat.css';
 
 const Chat = () => {
     const { state } = useContext(AuthenticationContext)
@@ -76,19 +76,15 @@ const Chat = () => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
       }, [messages]);
 
-    const handleClick=((e)=>{
-        e.preventDefault();
-    });
-
-    const listItems = ary.map((ary) => 
+    const listItems = messages.map((ary, id) => 
     {
-        if(ary.fromself===true){
-            return   <div className="messageselfmain">
+        if(ary.fromSelf===true){
+            return   <div className="messageselfmain" key={id}>
                 <div className="messageself">{ary.message}</div>
             </div>
         }
         else{
-            return  <div className="messagenotself">{ary.message}</div>
+            return  <div className="messagenotself" key={id}>{ary.message}</div>
         }
     }
     );
@@ -104,16 +100,16 @@ const Chat = () => {
     
                 </div>
                 <div className="headname">
-                    Aman Yadav
                 </div>
+                    Sagar Sehrawat
             </div>
                 <div className="messagedisp">
                     {listItems}
                 </div>
                 <div className="messagesend">
                     <form action="/url" method="GET">
-                        <input type="text" name="name" placeholder="Enter a message" className='messagetext' />
-                            <button onClick={handleClick} className="messagesendbtn">send</button>
+                        <input type="text" name="name" placeholder="Enter a message" className='messagetext' onChange={(e) => setMsg(e.target.value)} value={msg}/>
+                            <button onClick={sendChat} className="messagesendbtn">send</button>
                     </form>
                 </div>
             </div>

@@ -229,7 +229,7 @@ const Home = () => {
 								<Link
 									className={classes.links}
 									to={
-										item.PostedBy._id !== state._id
+										item.PostedBy._id !== state.user._id
 											? `/profile/${item.PostedBy._id}`
 											: "/profile"
 									}
@@ -247,7 +247,7 @@ const Home = () => {
 						/>
 
 						<CardActions className={classes.likeBar} disableSpacing>
-							{item.Likes.includes(state._id) ? (
+							{item.Likes.includes(state.user._id) ? (
 								<IconButton
 									aria-label="Like"
 									color="secondary"
@@ -324,7 +324,7 @@ const Home = () => {
 														<Link
 															className={classes.links}
 															to={
-																cmt.PostedBy._id !== state._id
+																cmt.PostedBy._id !== state.user._id
 																	? `/profile/${cmt.PostedBy._id}`
 																	: "/profile"
 															}

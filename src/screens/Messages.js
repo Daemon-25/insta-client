@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import AuthenticationContext from '../contexts/auth/Auth.context';
+import "./Messages.css"
 
 const Messages = () => {
-  const listItems = name.map((name) =>  
-        <div className="namedesi" onClick={clickHandle}>
-            {name}
+  const { state } = useContext(AuthenticationContext)
+  const navigate = useNavigate()
+  const members = []
+  const host = "http://localhost:3000/"
+
+  state.user.Followers.map((e) => {
+    const x = {
+      id : e.FollowerId,
+      name : e.FollowerName
+    }
+    members.push(x);
+  })
+  state.user.Following.map((e) => {
+    const x = {
+      id : e.FollowingId,
+      name : e.FollowingName
+    }
+    members.push(x);
+  })
+
+  const listItems = members.map((e) =>  
+        <div className="namedesi" onClick={(e) => navigate(`/messages/${e.id}`)}>
+            {e.name}
         </div>
     );
   return (

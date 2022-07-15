@@ -25,9 +25,9 @@ const Chat = () => {
             setMsg("");
         }
     };
-    
 
-    useEffect( () => {
+
+    useEffect(() => {
         const func = async () => {
             socket.current = io(host);
             socket.current.emit("add-user", currentUser);
@@ -42,7 +42,7 @@ const Chat = () => {
     }, []);
 
     const handleSendMsg = async (msg) => {
-        setMessages((messages) => [...messages, {fromSelf : true, message : msg}])
+        setMessages((messages) => [...messages, { fromSelf: true, message: msg }])
         await socket.current.emit("send-msg", {
             from: currentUser,
             to: userId,
@@ -59,31 +59,30 @@ const Chat = () => {
 
     useEffect(() => {
         if (socket.current) {
-          socket.current.on("msg-recieve", (msg) => {
-            console.log(msg)
-            setMessages((messages) => [...messages, {fromSelf : false, message : msg}]);
-          });
+            socket.current.on("msg-recieve", (msg) => {
+                console.log(msg)
+                setMessages((messages) => [...messages, { fromSelf: false, message: msg }]);
+            });
         }
-      }, []);
-    
-      useEffect(() => {
-        arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-        
-      }, [arrivalMessage]);
-    
-      useEffect(() => {
-        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, [messages]);
+    }, []);
 
-    const listItems = messages.map((ary, id) => 
-    {
-        if(ary.fromSelf===true){
-            return   <div className="messageselfmain" key={id}>
+    useEffect(() => {
+        arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+
+    }, [arrivalMessage]);
+
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
+    const listItems = messages.map((ary, id) => {
+        if (ary.fromSelf === true) {
+            return <div className="messageselfmain" key={id}>
                 <div className="messageself">{ary.message}</div>
             </div>
         }
-        else{
-            return  <div className="messagenotself" key={id}>{ary.message}</div>
+        else {
+            return <div className="messagenotself" key={id}>{ary.message}</div>
         }
     }
     );
@@ -93,26 +92,36 @@ const Chat = () => {
             <Navbar />
 
             <div className='message-main'>
-            <div className="message-second">
-            <div className="messagehead">
-                <div className="dpimage">
-    
-                </div>
-                <div className="headname">
-                </div>
-                    Sagar Sehrawat
-            </div>
-                <div className="messagedisp">
-                    {listItems}
-                </div>
-                <div className="messagesend">
-                    <form>
-                        <input type="text" name="name" placeholder="Enter a message" className='messagetext' onChange={(e) => setMsg(e.target.value)} value={msg}/>
+                <div className="message-second">
+                    <div className="messagehead">
+                        <div className="dpimage">
+
+                        </div>
+                        <div className="headname">
+                        </div>
+                        Sagar Sehrawat
+                    </div>
+                    <div className="messagedisp">
+                        {messages.map((ary, id) => {
+                            if (ary.fromSelf === true) {
+                                return <div className="messageselfmain" key={id}>
+                                    <div className="messageself" ref={scrollRef}>{ary.message}</div>
+                                </div>
+                            }
+                            else {
+                                return <div className="messagenotself" key={id} ref={scrollRef}>{ary.message}</div>
+                            }
+                        }
+                        )}
+                    </div>
+                    <div className="messagesend">
+                        <form>
+                            <input type="text" name="name" placeholder="Enter a message" className='messagetext' onChange={(e) => setMsg(e.target.value)} value={msg} />
                             <button onClick={sendChat} className="messagesendbtn">send</button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
         </>
 
     )

@@ -1,0 +1,32 @@
+.main_chat{
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    color: rgb(168, 163, 163);
+    box-shadow: 2px;
+    display: flex;
+}
+.people_names{
+    height: 100vh;
+    width: 30vw;
+    background-color: rgb(137, 132, 132);
+}
+.livechat{
+    
+}
+.dispchat{
+    
+}
+.messagesend{
+    
+}
+.namedesi{
+    width: 100%;
+    height: 4vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}

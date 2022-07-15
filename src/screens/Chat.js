@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { io } from "socket.io-client";
 import Navbar from '../components/Navbar';
 import AuthenticationContext from '../contexts/auth/Auth.context';
+import './Chatcss';
 
 const Chat = () => {
     const { state } = useContext(AuthenticationContext)
@@ -75,41 +76,50 @@ const Chat = () => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
       }, [messages]);
 
+    const handleClick=((e)=>{
+        e.preventDefault();
+    });
 
-
+    const listItems = ary.map((ary) => 
+    {
+        if(ary.fromself===true){
+            return   <div className="messageselfmain">
+                <div className="messageself">{ary.message}</div>
+            </div>
+        }
+        else{
+            return  <div className="messagenotself">{ary.message}</div>
+        }
+    }
+    );
 
     return (
         <>
             <Navbar />
-            <div>
-                <div className="chat-messages">
-                    {
-                    messages.map((msg, id) => {
-                        return (
-                            <div key={id} ref={scrollRef}>
-                                
-                                    <div className="content ">
-                                        <p>{msg.message}</p>
-                                    </div>
-                                </div>
-                            
-                        );
-                    })
-                }
+
+            <div className='message-main'>
+            <div className="message-second">
+            <div className="messagehead">
+                <div className="dpimage">
+    
                 </div>
-                <form className="input-container" >
-                    <input
-                        type="text"
-                        placeholder="type your message here"
-                        onChange={(e) => setMsg(e.target.value)}
-                        value={msg}
-                    />
-                    <button type="submit" onClick={sendChat}>
-Send
-                    </button>
-                </form>
+                <div className="headname">
+                    Aman Yadav
+                </div>
             </div>
+                <div className="messagedisp">
+                    {listItems}
+                </div>
+                <div className="messagesend">
+                    <form action="/url" method="GET">
+                        <input type="text" name="name" placeholder="Enter a message" className='messagetext' />
+                            <button onClick={handleClick} className="messagesendbtn">send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         </>
+
     )
 }
 

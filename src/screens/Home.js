@@ -73,8 +73,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	media: {
 		//height: 0,
-		paddingTop: "56.25%", // 16:9
-		height: "max-content",
+		maxHeight: "100%",
+		maxWidth: "100%",
+		paddingTop: "100.00%", // 16:9
 	},
 	likeBar: {
 		height: "25px",

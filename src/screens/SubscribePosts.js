@@ -134,7 +134,7 @@ const SubscribePost = () => {
 	}, []);
 
 	const likePost = (id) => {
-		axios.put(`http://localhost:3001/like`, { postId: id }, config)
+		axios.put(`https://instagram-clone-backend25.herokuapp.com/like`, { postId: id }, config)
 			.then((result) => {
 				const newData = data.map((item) => {
 					if (result.data._id === item._id) return result.data;
@@ -146,7 +146,7 @@ const SubscribePost = () => {
 	};
 
 	const unlikePost = (id) => {
-		axios.put(`http://localhost:3001/Unlike`, { postId: id }, config)
+		axios.put(`https://instagram-clone-backend25.herokuapp.com/Unlike`, { postId: id }, config)
 			.then((res) => {
 				const newData = data.map((item) => {
 					if (res.data._id === item._id) return res.data;
@@ -159,7 +159,7 @@ const SubscribePost = () => {
 
 	const makeComment = (text, postId) => {
 		setComment("");
-		axios.put(`http://localhost:3001/comment`, { text, postId }, config)
+		axios.put(`https://instagram-clone-backend25.herokuapp.com/comment`, { text, postId }, config)
 			.then((result) => {
 				const newData = data.map((item) => {
 					if (result.data._id === item._id) return result.data;
@@ -171,7 +171,7 @@ const SubscribePost = () => {
 	};
 
 	const deletePost = (postId) => {
-		axios.delete(`http://localhost:3001/deletepost/${postId}`, config).then((res) => {
+		axios.delete(`https://instagram-clone-backend25.herokuapp.com/deletepost/${postId}`, config).then((res) => {
 			const newData = data.filter((item) => {
 				return item._id !== res.data;
 			});
@@ -205,7 +205,7 @@ const SubscribePost = () => {
 								<Link
 									className={classes.links}
 									to={
-										item.PostedBy._id !== state._id
+										item.PostedBy._id !== state.user._id
 											? `/profile/${item.PostedBy._id}`
 											: "/profile"
 									}
@@ -223,7 +223,7 @@ const SubscribePost = () => {
 						/>
 
 						<CardActions className={classes.likeBar} disableSpacing>
-							{item.Likes.includes(state._id) ? (
+							{item.Likes.includes(state.user._id) ? (
 								<IconButton
 									aria-label="Like"
 									color="secondary"
@@ -279,7 +279,7 @@ const SubscribePost = () => {
 														<Link
 															className={classes.links}
 															to={
-																cmt.PostedBy._id !== state._id
+																cmt.PostedBy._id !== state.user._id
 																	? `/profile/${cmt.PostedBy._id}`
 																	: "/profile"
 															}

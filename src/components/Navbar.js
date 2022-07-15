@@ -282,6 +282,7 @@
                          root: classes.inputRoot,
                          input: classes.inputInput,
                      }}
+                     
                      inputProps={{ "aria-label": "search" }}
                      onChange={(e) => findUser(e.target.value)}
                  />
@@ -398,27 +399,13 @@
                                      style={{ "color": "rgba(0, 0, 0, 0.54)" }}
                                      icon={
                                          <Badge
-                                             badgeContent={4}
+                                             badgeContent={0}
                                              color="secondary"
                                              style={{
                                                  "color": "rgba(0, 0, 0, 0.54)",
                                              }}
                                          >
                                              <AllInboxOutlinedIcon />
-                                         </Badge>
-                                     }
-                                 />
-                                 <BottomNavigationAction
-                                     label="Notifications"
-                                     style={{ "color": "rgba(0, 0, 0, 0.54)" }}
-                                     value="notification"
-                                     icon={
-                                         <Badge badgeContent={6} color="secondary">
-                                             <NotificationsActiveOutlinedIcon
-                                                 style={{
-                                                     "color": "rgba(0, 0, 0, 0.54)",
-                                                 }}
-                                             />
                                          </Badge>
                                      }
                                  />

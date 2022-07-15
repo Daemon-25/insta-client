@@ -39,7 +39,8 @@ const Routing = () => {
 					<Route exact path="/create" element={<CreatePost />} />
 					<Route exact path="/profile" element={<Profile />} />
 					<Route exact path="/profile/:userid" element={<UserProfile />} />
-					<Route exact path="/messages" element={<Chat />} />
+					<Route exact path="/messages" element={<Messages />} />
+					<Route exact path="/messages/:userId" element={<Chat />} />
 				</Route>
 
 				{/* Separate the protected routes from public ones */}

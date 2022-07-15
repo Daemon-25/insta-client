@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef, useContext } from 'react'
+import { useParams } from 'react-router-dom';
 import { io } from "socket.io-client";
 import Navbar from '../components/Navbar';
 import AuthenticationContext from '../contexts/auth/Auth.context';
@@ -11,7 +12,9 @@ const Chat = () => {
     const socket = useRef()
     const scrollRef = useRef()
     const currentUser = state.user._id;
+    const userId = useParams().userId
     const host = "http://localhost:3001"
+    
 
     const [msg, setMsg] = useState("");
 
@@ -30,7 +33,7 @@ const Chat = () => {
             socket.current.emit("add-user", currentUser);
             const response = await axios.post(`${host}/getmsg`, {
                 from: currentUser,
-                to: "62cf1c7d1c2a661fc94557d0"
+                to: userId
             })
             console.log(response)
             setMessages(response.data)
@@ -42,13 +45,13 @@ const Chat = () => {
         setMessages((messages) => [...messages, {fromSelf : true, message : msg}])
         await socket.current.emit("send-msg", {
             from: currentUser,
-            to: "62cf1c7d1c2a661fc94557d0",
+            to: userId,
             message: msg
         })
 
         await axios.post(`${host}/addmsg`, {
             from: currentUser,
-            to: "62cf1c7d1c2a661fc94557d0",
+            to: userId,
             message: msg
         })
         console.log(messages)
@@ -56,11 +59,22 @@ const Chat = () => {
 
     useEffect(() => {
         if (socket.current) {
-            socket.current.on("msg-recieve", (msg) => {
-                setArrivalMessage({ fromSelf: false, message: msg })
-            })
+          socket.current.on("msg-recieve", (msg) => {
+            console.log(msg)
+            setMessages((messages) => [...messages, {fromSelf : false, message : msg}]);
+          });
         }
-    }, [])
+      }, []);
+    
+      useEffect(() => {
+        arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+        
+      }, [arrivalMessage]);
+    
+      useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, [messages]);
+
 
 
 
@@ -72,7 +86,7 @@ const Chat = () => {
                     {
                     messages.map((msg, id) => {
                         return (
-                            <div key={id}>
+                            <div key={id} ref={scrollRef}>
                                 
                                     <div className="content ">
                                         <p>{msg.message}</p>
@@ -91,7 +105,7 @@ const Chat = () => {
                         value={msg}
                     />
                     <button type="submit" onClick={sendChat}>
-
+Send
                     </button>
                 </form>
             </div>

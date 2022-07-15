@@ -71,7 +71,7 @@ const UserProfilePage = () => {
 					...prevState,
 					user: {
 						...prevState.user,
-						Followers: [...prevState.user.Followers, result.data._id],
+						Followers: [...prevState.user.Followers, {rFollowerId : result.data._id, FollowerName : result.data.Name}],
 					},
 				};
 			});

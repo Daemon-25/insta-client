@@ -78,3 +78,7 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiBottomNavigationAction-root{
+  padding-top: 12px !important;
+}

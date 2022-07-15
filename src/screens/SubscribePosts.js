@@ -205,7 +205,7 @@ const SubscribePost = () => {
 								<Link
 									className={classes.links}
 									to={
-										item.PostedBy._id !== state._id
+										item.PostedBy._id !== state.user._id
 											? `/profile/${item.PostedBy._id}`
 											: "/profile"
 									}
@@ -223,7 +223,7 @@ const SubscribePost = () => {
 						/>
 
 						<CardActions className={classes.likeBar} disableSpacing>
-							{item.Likes.includes(state._id) ? (
+							{item.Likes.includes(state.user._id) ? (
 								<IconButton
 									aria-label="Like"
 									color="secondary"
@@ -279,7 +279,7 @@ const SubscribePost = () => {
 														<Link
 															className={classes.links}
 															to={
-																cmt.PostedBy._id !== state._id
+																cmt.PostedBy._id !== state.user._id
 																	? `/profile/${cmt.PostedBy._id}`
 																	: "/profile"
 															}

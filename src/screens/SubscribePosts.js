@@ -4,7 +4,7 @@
  * GitHub repo: https://github.com/TheLordA/Instagram-Clone
  *
  */
-
+ import image2 from './InstaMain1.png'
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -183,7 +183,8 @@ const SubscribePost = () => {
 			<Navbar />
 			{data.length===0 ? 
 			
-				<h1>No Posts found</h1>
+				// <h1>No Posts found</h1>
+				<img src={image2} alt="" style={{height: "calc(100%)", width:"100%"}}/>
 			
 			: data.map((item) => (
 				<div className="home" key={item._id}>

@@ -18,6 +18,9 @@
     max-width: 100%;
     flex-basis: 100%;
 } */
+images{
+  padding: auto ! important;
+}
 .MuiGrid-grid-sm-4 {
   flex-grow: 0;
   max-width: 50% !important;

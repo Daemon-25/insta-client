@@ -220,20 +220,7 @@ const UserProfilePage = () => {
 								  ))
 								: "Is Loading ..."}
 
-							<Grid item xs={4} className={classes.post_box}>
-								<img
-									alt="post"
-									style={{ width: "100%" }}
-									src="https://via.placeholder.com/500/f5f5f5"
-								/>
-							</Grid>
-							<Grid item xs={4} className={classes.post_box}>
-								<img
-									alt="post"
-									style={{ width: "100%" }}
-									src="https://via.placeholder.com/500/f5f5f5"
-								/>
-							</Grid>
+							
 						</Grid>
 					</TabPanel>
 				</Box>

@@ -12,7 +12,49 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+@media (max-width: 960px){
+/* .MuiGrid-grid-md-6 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+} */
+.MuiGrid-grid-sm-4 {
+  flex-grow: 0;
+  max-width: 50% !important;
+  flex-basis: 100% !important;
+}
+.MuiGrid-grid-sm-8 {
+  flex-grow: 0 !important;
+  max-width: 50% !important;
+  flex-basis: 100% !important;
+}
+.MuiGrid-grid-xs-12 {
+  flex-grow: 0 !important;
+  max-width: 50% !important;
+  flex-basis: 100% !important;
+}
+}
+@media (max-width: 900px){
+  .MuiGrid-grid-sm-4 {
+    flex-grow: 0;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+}
+.MuiGrid-grid-sm-8 {
+    flex-grow: 0 !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+}
+.MuiGrid-grid-xs-12 {
+    flex-grow: 0 !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+}
+.MuiGrid-item {
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

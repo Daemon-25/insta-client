@@ -4,7 +4,7 @@
  * GitHub repo: https://github.com/TheLordA/Instagram-Clone
  *
  */
-
+import image2 from './instaHome.png'
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthenticationContext from "../contexts/auth/Auth.context";
@@ -26,6 +26,14 @@ import Alert from "@material-ui/lab/Alert";
 
 // General Styles
 const useStyles = makeStyles((theme) => ({
+	main:{
+		// width:"100vw",
+		height:"100vh",
+		display:"flex",
+		boxSizing:"border-box",
+		flexDirection:"row",
+		flexWrap:"wrap"
+	},
 	Logo: {
 		fontFamily: "Grand Hotel, cursive",
 		margin: "0px 0px 20px 0px",
@@ -36,13 +44,30 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: "column",
 		alignItems: "center",
 	},
-	image: {
-		backgroundSize: "cover",
+	image1: {
+		display:"flex",
+		overflow:"auto" ,
+		// width:"50vw " ,
+		minWidth:"300px",
+		height: "100vh",
+		border:"3px solid black",
+		backgroundSize: "100% 100%",
 		backgroundColor: "#fafafa",
-		backgroundImage: "url(https://source.unsplash.com/random)",
+		// backgroundImage: "url(https://source.unsplash.com/random)",
 		backgroundRepeat: "no-repeat",
 		backgroundPosition: "center",
-		height: "100vh",
+		justifyContent:"center",
+		alignItems:"center"
+	},
+	RightPage:{
+		border:"3px solid black",
+		minWidth:"300px",
+		// width:"50vw",
+		height:"100vh",
+		display:"flex",
+		justifyContent:"center",
+		alignItems:"center"
+
 	},
 	form: {
 		width: "100%", // Fix IE 11 issue.
@@ -113,9 +138,11 @@ const Login = () => {
 	
 
 	return (
-		<Grid container>
-			<Grid className={classes.image} item sm={4} md={6} />
-			<Grid item xs={12} sm={8} md={6}>
+		<Grid container className={classes.main}>
+			<Grid className={classes.image1} item sm={4} md={6} >
+				<img src={image2} alt="" style={{height: "80vh"}}/>
+			</Grid>
+			<Grid item xs={12} sm={8} md={6} className={classes.RightPage}>
 				<Container component="main" maxWidth="xs">
 					<CssBaseline />
 					<div className={classes.paper}>

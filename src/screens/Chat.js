@@ -15,7 +15,6 @@ const Chat = () => {
     const currentUser = state.user._id;
     const userId = useParams().userId
     const host = "http://localhost:3001"
-    
 
     const [msg, setMsg] = useState("");
 
@@ -50,12 +49,12 @@ const Chat = () => {
             message: msg
         })
 
-        await axios.post(`${host}/addmsg`, {
+        const res = await axios.post(`${host}/addmsg`, {
             from: currentUser,
             to: userId,
             message: msg
         })
-        console.log(messages)
+        console.log(res)
     }
 
     useEffect(() => {
@@ -107,7 +106,7 @@ const Chat = () => {
                     {listItems}
                 </div>
                 <div className="messagesend">
-                    <form action="/url" method="GET">
+                    <form>
                         <input type="text" name="name" placeholder="Enter a message" className='messagetext' onChange={(e) => setMsg(e.target.value)} value={msg}/>
                             <button onClick={sendChat} className="messagesendbtn">send</button>
                     </form>

@@ -31,6 +31,7 @@ export const NEW_PWD_URL = `http://localhost:3001/new-pwd`;
 
 // Profile Screen
 export const MY_POST_URL = `http://localhost:3001/mypost`;
+
 export const MY_BOOKMARKS_URL = `http://localhost:3001/bookmarks`;
 
 // ResetPassword Screen

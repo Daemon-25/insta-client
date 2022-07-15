@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import AuthenticationContext from '../contexts/auth/Auth.context';
 import "./Messages.css"
@@ -25,9 +25,12 @@ const Messages = () => {
     members.push(x);
   })
 
+  console.log(members[0].id)
+
   const listItems = members.map((e) =>  
-        <div className="namedesi" onClick={(e) => navigate(`/messages/${e.id}`)}>
-            {e.name}
+  
+        <div className="namedesi">
+            <Link to={`/messages/${e.id}`}>{e.name}</Link>
         </div>
     );
   return (

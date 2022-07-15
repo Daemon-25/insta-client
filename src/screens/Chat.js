@@ -14,7 +14,7 @@ const Chat = () => {
     const scrollRef = useRef()
     const currentUser = state.user._id;
     const userId = useParams().userId
-    const host = "http://localhost:3001"
+    const host = "https://instagram-clone-backend25.herokuapp.com"
 
     const [msg, setMsg] = useState("");
 

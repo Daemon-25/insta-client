@@ -151,7 +151,7 @@
  
      const findUser = (pattern) => {
          if (!(pattern === "")) {
-             const URL = `http://localhost:3001/users-research`;
+             const URL = `https://instagram-clone-backend25.herokuapp.com/users-research`;
              const config = {
                  headers: {
                     Authorization: "Bearer " + localStorage.getItem("jwt"),

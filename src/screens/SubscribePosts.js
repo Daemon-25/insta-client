@@ -4,7 +4,7 @@
  * GitHub repo: https://github.com/TheLordA/Instagram-Clone
  *
  */
- import image2 from './InstaMain1.png'
+ import image2 from './images/InstaMain1.png'
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";

@@ -4,7 +4,7 @@
  * GitHub repo: https://github.com/TheLordA/Instagram-Clone
  *
  */
-import image2 from './instaHome.png'
+import image2 from './images/1.png'
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthenticationContext from "../contexts/auth/Auth.context";
@@ -27,16 +27,19 @@ import Alert from "@material-ui/lab/Alert";
 // General Styles
 const useStyles = makeStyles((theme) => ({
 	main:{
-		// width:"100vw",
+		margin:"auto",
+		width:"70vw",
 		height:"100vh",
 		display:"flex",
 		boxSizing:"border-box",
 		flexDirection:"row",
-		flexWrap:"wrap"
+		flexWrap:"wrap",
+		justifyContent:"space-evenly",
 	},
 	Logo: {
 		fontFamily: "Grand Hotel, cursive",
 		margin: "0px 0px 20px 0px",
+		textAlign:"center",
 	},
 	paper: {
 		marginTop: "50px",
@@ -45,12 +48,14 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 	},
 	image1: {
+		// paddingLeft:"100px",
 		display:"flex",
 		overflow:"auto" ,
 		// width:"50vw " ,
+		width:"40vw",
 		minWidth:"300px",
 		height: "100vh",
-		border:"3px solid black",
+		// border:"3px solid black",
 		backgroundSize: "100% 100%",
 		backgroundColor: "#fafafa",
 		// backgroundImage: "url(https://source.unsplash.com/random)",
@@ -60,9 +65,10 @@ const useStyles = makeStyles((theme) => ({
 		alignItems:"center"
 	},
 	RightPage:{
-		border:"3px solid black",
+		// border:"3px solid black",
+		paddingBottom:"80px",
 		minWidth:"300px",
-		// width:"50vw",
+		width:"40vw",
 		height:"100vh",
 		display:"flex",
 		justifyContent:"center",
@@ -72,8 +78,10 @@ const useStyles = makeStyles((theme) => ({
 	form: {
 		width: "100%", // Fix IE 11 issue.
 		marginTop: theme.spacing(1),
+		// boxShadow:"10px 10px 10px grey",
 	},
 	submit: {
+		marginTop: 10,
 		margin: theme.spacing(2, 0, 2),
 	},
 }));
@@ -140,14 +148,14 @@ const Login = () => {
 	return (
 		<Grid container className={classes.main}>
 			<Grid className={classes.image1} item sm={4} md={6} >
-				<img src={image2} alt="" style={{height: "80vh"}}/>
+				<img src={image2} alt="" style={{height: "80vh"}} />
 			</Grid>
 			<Grid item xs={12} sm={8} md={6} className={classes.RightPage}>
 				<Container component="main" maxWidth="xs">
 					<CssBaseline />
 					<div className={classes.paper}>
 						<Typography className={classes.Logo} variant="h2" gutterBottom>
-							Instagram Clone
+							Instagram
 						</Typography>
 						{formatValidation ? (
 							<Alert variant="outlined" severity="error">
@@ -159,7 +167,7 @@ const Login = () => {
 								Invalid given Email/Password — check it out!
 							</Alert>
 						) : null}
-						<form className={classes.form} noValidate>
+						<form className={classes.form}  noValidate>
 							<TextField
 								variant="outlined"
 								margin="normal"
@@ -173,7 +181,7 @@ const Login = () => {
 								value={email}
 								onChange={handleInputChanges}
 							/>
-							<TextField
+							<TextField 
 								variant="outlined"
 								margin="normal"
 								required

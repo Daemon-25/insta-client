@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 
 const Copyright = () => {
 	return (
-		<Typography variant="body2" color="textSecondary" align="center">
+		<Typography variant="body2" color="textSecondary" align="center" style={{marginTop:"10px"}}>
 			{"Copyright © "}
 			<Link to="/">InstagramClone</Link> {new Date().getFullYear()}
 			{"."}

@@ -30,7 +30,7 @@ const Messages = () => {
   const listItems = members.map((e) =>  
   
         <div className="namedesi">
-            <Link to={`/messages/${e.id}`}>{e.name}</Link>
+            <Link className='namedesilink' to={`/messages/${e.id}`}>{e.name}</Link>
         </div>
     );
   return (

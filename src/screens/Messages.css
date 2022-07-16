@@ -1,15 +1,22 @@
 .main_chat{
-    height: 100vh;
-    width: 100vw;
     justify-content: center;
-    color: rgb(168, 163, 163);
+    /* color: rgb(223, 216, 216); */
     box-shadow: 2px;
     display: flex;
+    padding-top: 10px;
 }
 .people_names{
-    height: 100vh;
+    padding-top: 20px;
+    height: 85vh;
+    overflow: scroll;
     width: 30vw;
-    background-color: rgb(137, 132, 132);
+    border-radius: 30px;
+    /* background-color: rgb(233, 232, 232); */
+    box-shadow: 2px 5px #565656;
+    
+}
+::-webkit-scrollbar {
+    width: 0px;
 }
 .livechat{
     
@@ -22,11 +29,26 @@
 }
 .namedesi{
     width: 100%;
-    height: 4vh;
+    margin-bottom: 10px;
     display: flex;
     text-align: center;
     justify-content: center;
     color: black;
-    border: 2px solid black;
-    border-radius: 10px;
+    /* border-bottom: 2px solid black; */
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px #7f7e7e;
+}
+.namedesilink{
+    color: black;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+@media only screen and (max-width: 428px) {
+    .people_names{
+        width: 100vw;
+        box-shadow: none;
+    }
+
 }

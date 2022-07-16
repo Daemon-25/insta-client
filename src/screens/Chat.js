@@ -95,11 +95,11 @@ const Chat = () => {
                 <div className="message-second">
                     <div className="messagehead">
                         <div className="dpimage">
-
+                            <img className='dpimg' src="https://heavyng.com/wp-content/uploads/2019/11/Joker.jpg" alt="" />
                         </div>
                         <div className="headname">
-                        </div>
                         Sagar Sehrawat
+                        </div>
                     </div>
                     <div className="messagedisp">
                         {messages.map((ary, id) => {
@@ -117,8 +117,8 @@ const Chat = () => {
                     <div className="messagesend">
                         <form>
                             <input type="text" name="name" placeholder="Enter a message" className='messagetext' onChange={(e) => setMsg(e.target.value)} value={msg} />
-                            <button onClick={sendChat} className="messagesendbtn">send</button>
                         </form>
+                            <button onClick={sendChat} className="messagesendbtn">send</button>
                     </div>
                 </div>
             </div>
